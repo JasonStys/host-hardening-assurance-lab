@@ -1,0 +1,82 @@
+# Jason Stys: four OS/Python lanes, security gates and read-only disposable worker probes.
+# Jobs: quality tests fixtures; security audits source/history/dependencies and workflow syntax.
+# Variables: matrix.os/python select workers. No retained artifact/cache uploads or host mutations.
+name: Validate
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    name: Python ${{ matrix.python }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: ubuntu-latest, python: '3.12'}
+          - {os: ubuntu-latest, python: '3.14'}
+          - {os: windows-latest, python: '3.14'}
+          - {os: macos-latest, python: '3.14'}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install reviewed hash locks
+        run: python -m pip install --require-hashes -r requirements-dev.lock
+      - name: Bootstrap verified portable PowerShell on macOS
+        if: runner.os == 'macOS'
+        run: python scripts/install_pwsh.py
+      - name: Quality, boundary tests and measured performance
+        shell: bash
+        run: bash scripts/validate.sh
+      - name: Parse PowerShell and guard read-only commands
+        shell: pwsh
+        run: ./scripts/check-powershell.ps1
+      - name: Windows disposable worker read-only probe
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          ./scripts/collect-windows.ps1 -HostId ci-disposable -AcknowledgeAuthorizedHost | Out-File -Encoding utf8 out/worker.json
+          python -c "from pathlib import Path; from hardening.contracts import load_snapshot; s=load_snapshot(Path('out/worker.json')); assert s.kind=='authorized_read_only'; print('Disposable worker contract validated; no private host identifiers collected')"
+      - name: Results in logs and summary only
+        if: always()
+        run: python scripts/summary.py
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.14'
+      - run: python -m pip install --require-hashes -r requirements-dev.lock
+      - name: Audit reviewed lock graphs
+        run: python -m pip_audit -r requirements-dev.lock --disable-pip --no-deps
+      - name: Install hash-verified official scanners
+        run: |
+          python scripts/tools.py gitleaks
+          python scripts/tools.py trivy
+          python scripts/tools.py actionlint
+      - name: Secret, configuration, dependency and workflow gates
+        run: |
+          .tools/gitleaks git . --redact --no-banner
+          .tools/trivy fs --scanners vuln,misconfig --severity HIGH,CRITICAL --exit-code 1 --skip-dirs .git,.tools,.venv,out .
+          .tools/actionlint
+          shellcheck scripts/validate.sh scripts/collect-linux.sh
+      - name: Security summary
+        run: |
+          printf '%s\n' '## Security gates passed' '' 'Dependency audit, history secret scan, HIGH/CRITICAL configuration/vulnerability scan, actionlint and ShellCheck. No suppressions or artifact/cache uploads.' >> "$GITHUB_STEP_SUMMARY"

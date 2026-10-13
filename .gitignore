@@ -1,0 +1,16 @@
+.venv/
+.tools/
+__pycache__/
+.pytest_cache/
+.hypothesis/
+.mypy_cache/
+.ruff_cache/
+.coverage*
+out/
+private/
+*.db
+*.sqlite*
+*.pem
+*.key
+.env*
+!.env.example

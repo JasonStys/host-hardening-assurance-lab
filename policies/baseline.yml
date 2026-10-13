@@ -1,0 +1,97 @@
+# Jason Stys: small authored assurance baseline, not CIS/STIG/ATO certification.
+# Controls: ten platform-scoped equality/mode checks; weight is prioritization, not risk probability.
+# Variables: schema/id identify contract; max_age_seconds bounds evidence freshness.
+schema: 1
+id: workstation-server-v1
+max_age_seconds: 86400
+controls:
+  - id: LNX-SSH-PASSWORD
+    platform: linux
+    fact: ssh.password_auth
+    operator: equals
+    expected: 'no'
+    weight: 8
+    title: SSH password authentication explicitly disabled
+    rationale: Reduce password-based exposure where managed key access is available.
+    review: Verify tested key access and recovery before changing approved SSH settings. This does not rule out keyboard-interactive passwords.
+  - id: LNX-SSH-ROOT
+    platform: linux
+    fact: ssh.root_login
+    operator: equals
+    expected: 'no'
+    weight: 8
+    title: Direct SSH root login explicitly disabled
+    rationale: Prefer accountable individual access with controlled privilege escalation.
+    review: Review service accounts and recovery access. Prohibit-password still allows some root access and does not pass this check.
+  - id: LNX-SSH-KEYBOARD
+    platform: linux
+    fact: ssh.keyboard_auth
+    operator: equals
+    expected: 'no'
+    weight: 6
+    title: SSH keyboard-interactive explicitly disabled
+    rationale: Avoid an unintended alternative interactive authentication channel.
+    review: Confirm whether PAM MFA depends on keyboard-interactive. If it does, review a documented scoped deviation rather than disabling MFA blindly.
+  - id: LNX-SSH-MODE
+    platform: linux
+    fact: ssh.config_mode
+    operator: forbidden_bits
+    expected: 18
+    weight: 7
+    title: SSH config not writable by group or others
+    rationale: The decimal mask 18 is octal 022, covering group/other write permission bits.
+    review: Review POSIX mode with the owner. This check does not inspect ownership, ACLs, parent-directory permissions or effective daemon configuration.
+  - id: LNX-ASLR
+    platform: linux
+    fact: kernel.aslr
+    operator: equals
+    expected: 2
+    weight: 6
+    title: Linux ASLR includes heap randomization
+    rationale: Kernel value 2 adds heap randomization to the value-1 randomization modes.
+    review: Validate legacy application compatibility and platform support before changing kernel policy. ASLR does not guarantee exploit prevention.
+  - id: WIN-FW-DOMAIN
+    platform: windows
+    fact: firewall.domain
+    operator: equals
+    expected: true
+    weight: 8
+    title: Domain firewall profile enabled in ActiveStore
+    rationale: ActiveStore aggregates applicable policy instead of only reading persistent local settings.
+    review: Review effective rules and service health separately. Profile configuration alone is not proof of network filtering.
+  - id: WIN-FW-PRIVATE
+    platform: windows
+    fact: firewall.private
+    operator: equals
+    expected: true
+    weight: 8
+    title: Private firewall profile enabled in ActiveStore
+    rationale: Avoid losing configured protection when the network profile changes.
+    review: Review effective rules and service health separately; do not assume this is the currently active network profile.
+  - id: WIN-FW-PUBLIC
+    platform: windows
+    fact: firewall.public
+    operator: equals
+    expected: true
+    weight: 9
+    title: Public firewall profile enabled in ActiveStore
+    rationale: Maintain configured filtering policy for untrusted network contexts.
+    review: Review remote administration and effective rules with the host owner before approved changes.
+  - id: WIN-DEFENDER
+    platform: windows
+    fact: defender.realtime
+    operator: equals
+    expected: true
+    weight: 8
+    title: Defender reports real-time protection enabled
+    rationale: Check the reported protection state without collecting scans or private identifiers.
+    review: An alternate approved antivirus may require a scoped deviation. This is not a malware scan or proof of threat-free operation.
+  - id: WIN-SMB1
+    platform: windows
+    fact: smb.smb1
+    operator: equals
+    expected: false
+    weight: 9
+    title: SMB server version 1 disabled
+    rationale: Prefer newer supported SMB protocol versions where service compatibility allows.
+    review: Review legacy dependencies and approved replacement plans. The SMB server configuration does not describe SMB client settings.

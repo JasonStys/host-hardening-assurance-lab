@@ -1,0 +1,9 @@
+{
+  "python": "3.14.6",
+  "platform": "Windows",
+  "snapshots": 10000,
+  "checks": 50000,
+  "seconds": 0.195093,
+  "snapshots_per_second": 51257.47,
+  "scope": "in-memory synthetic evaluation only; excludes collection, parsing, disk export"
+}
