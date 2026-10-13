@@ -152,7 +152,7 @@ def text(value: Any, maximum: int = 500, token: bool = False) -> str:
     if (
         not isinstance(value, str)
         or not 1 <= len(value) <= maximum
-        or any(ord(c) < 32 for c in value)
+        or any(ord(c) < 32 or ord(c) == 127 or 0xD800 <= ord(c) <= 0xDFFF for c in value)
     ):
         raise Rejected("invalid bounded text")
     if token and not TOKEN.fullmatch(value):

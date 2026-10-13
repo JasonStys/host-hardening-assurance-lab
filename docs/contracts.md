@@ -1,6 +1,6 @@
 # Evidence contracts, scoring and drift
 
-All formats are version 1 and reject unknown fields. Inputs are regular files <=128 KiB. IDs use 1–80 ASCII alphanumeric/dot/underscore/hyphen characters and start alphanumeric. Text is bounded and forbids C0 control characters. Timestamps are exactly second-precision UTC `YYYY-MM-DDTHH:MM:SSZ`; naive dates/offset spellings are refused. Canonical JSON (sorted keys, finite numbers) binds semantic policy/snapshot digests, not signatures.
+All formats are version 1 and reject unknown fields. Inputs are regular files <=128 KiB. IDs use 1–80 ASCII alphanumeric/dot/underscore/hyphen characters and start alphanumeric. Text is bounded and forbids C0/DEL characters and lone Unicode surrogates. Timestamps are exactly second-precision UTC `YYYY-MM-DDTHH:MM:SSZ`; naive dates/offset spellings are refused. Canonical JSON (sorted keys, finite numbers) binds semantic policy/snapshot digests, not signatures.
 
 ## Policy
 

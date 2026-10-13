@@ -65,7 +65,7 @@ Start with [architecture/ADR](docs/architecture.md), [contracts and scoring](doc
 
 ## File guide
 
-Every tracked file is summarized below. Python and shell file headers include generated exact function/parameter/variable positions, enforced in CI.
+Every tracked file is summarized below. Python, shell, SQL and YAML headers include generated exact symbol positions, enforced in CI.
 
 <!-- BEGIN FILE GUIDE -->
 
@@ -116,7 +116,7 @@ Every tracked file is summarized below. Python and shell file headers include ge
 | [requirements-runtime.lock](requirements-runtime.lock) | Hash-locked portable runtime dependency graph. |
 | [scripts/benchmark.py](scripts/benchmark.py) | Measure bounded baseline evaluation throughput; results are not production capacity claims. Jason Stys. |
 | [scripts/check-powershell.ps1](scripts/check-powershell.ps1) | PowerShell syntax and read-only command AST allowlist gate. |
-| [scripts/code\_map.py](scripts/code_map.py) | Generate/check exact Python symbol locations in file headers. Created by Jason Stys. |
+| [scripts/code\_map.py](scripts/code_map.py) | Generate/check exact Python, shell, SQL and YAML symbol positions in headers. Created by Jason Stys. |
 | [scripts/collect-linux.sh](scripts/collect-linux.sh) | Quoted wrapper for opt-in read-only Linux file evidence collection. |
 | [scripts/collect-windows.ps1](scripts/collect-windows.ps1) | Opt-in read-only cmdlet collector with host-isolated synthetic scenarios. |
 | [scripts/file\_guide.py](scripts/file_guide.py) | Maintain an exhaustive tracked-file README inventory without exposing ignored host evidence. Jason Stys. |

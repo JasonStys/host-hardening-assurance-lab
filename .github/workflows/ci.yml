@@ -1,6 +1,34 @@
 # Jason Stys: four OS/Python lanes, security gates and read-only disposable worker probes.
 # Jobs: quality tests fixtures; security audits source/history/dependencies and workflow syntax.
 # Variables: matrix.os/python select workers. No retained artifact/cache uploads or host mutations.
+# BEGIN CODE MAP (generated; python scripts/code_map.py)
+# parameter: name — line 32
+# parameter: on — line 33
+# parameter: push — line 34
+# parameter: branches — line 35
+# parameter: pull_request — line 36
+# parameter: workflow_dispatch — line 37
+# parameter: permissions — line 38
+# parameter: contents — line 39
+# parameter: concurrency — line 40
+# parameter: group — line 41
+# expression: github.ref — line 41
+# parameter: jobs — line 43
+# parameter: quality — line 44
+# expression: matrix.python — line 45
+# expression: matrix.os — line 45
+# parameter: strategy — line 48
+# parameter: matrix — line 50
+# parameter: include — line 51
+# parameter: steps — line 56
+# parameter: uses — line 57
+# parameter: with — line 58
+# parameter: run — line 64
+# parameter: if — line 66
+# parameter: shell — line 69
+# parameter: security — line 83
+# variable: GITHUB_STEP_SUMMARY — line 110
+# END CODE MAP
 name: Validate
 on:
   push:

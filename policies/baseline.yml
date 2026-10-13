@@ -1,6 +1,30 @@
 # Jason Stys: small authored assurance baseline, not CIS/STIG/ATO certification.
 # Controls: ten platform-scoped equality/mode checks; weight is prioritization, not risk probability.
 # Variables: schema/id identify contract; max_age_seconds bounds evidence freshness.
+# BEGIN CODE MAP (generated; python scripts/code_map.py)
+# parameter: schema — line 28
+# parameter: id — line 29
+# parameter: max_age_seconds — line 30
+# parameter: controls — line 31
+# control: LNX-SSH-PASSWORD — line 32
+# parameter: platform — line 33
+# parameter: fact — line 34
+# parameter: operator — line 35
+# parameter: expected — line 36
+# parameter: weight — line 37
+# parameter: title — line 38
+# parameter: rationale — line 39
+# parameter: review — line 40
+# control: LNX-SSH-ROOT — line 41
+# control: LNX-SSH-KEYBOARD — line 50
+# control: LNX-SSH-MODE — line 59
+# control: LNX-ASLR — line 68
+# control: WIN-FW-DOMAIN — line 77
+# control: WIN-FW-PRIVATE — line 86
+# control: WIN-FW-PUBLIC — line 95
+# control: WIN-DEFENDER — line 104
+# control: WIN-SMB1 — line 113
+# END CODE MAP
 schema: 1
 id: workstation-server-v1
 max_age_seconds: 86400

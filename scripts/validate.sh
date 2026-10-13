@@ -2,6 +2,7 @@
 # Jason Stys: fail-fast portable quality, synthetic assurance, contract and performance gates.
 # Functions: none. Variables: PYTHONPATH imports local modules; all tests use fixtures or owned temp trees.
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
+# variable: PYTHONPATH — line 8
 # END CODE MAP
 set -euo pipefail
 export PYTHONPATH=.

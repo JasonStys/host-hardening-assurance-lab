@@ -1,5 +1,24 @@
 # Jason Stys: Python security-extended analysis; only this job can publish code-scanning findings.
 # Jobs: analyze. Variables: none. No deployment credentials, cache or Actions artifact uploads.
+# BEGIN CODE MAP (generated; python scripts/code_map.py)
+# parameter: name — line 22
+# parameter: on — line 23
+# parameter: push — line 24
+# parameter: branches — line 25
+# parameter: pull_request — line 26
+# parameter: workflow_dispatch — line 27
+# parameter: permissions — line 28
+# parameter: contents — line 29
+# parameter: jobs — line 30
+# parameter: analyze — line 31
+# parameter: steps — line 37
+# parameter: uses — line 38
+# parameter: with — line 39
+# parameter: languages — line 43
+# parameter: queries — line 44
+# parameter: upload — line 48
+# parameter: category — line 49
+# END CODE MAP
 name: CodeQL
 on:
   push:

@@ -2,7 +2,7 @@
 
 Created by Jason Stys. Prefer small explicit modules, meaningful identifiers, dataclass contracts, exact types and readable control flow. Policy constants/limits make assumptions visible. Favor measured simplicity over premature optimization. Weighted scores are not security probabilities, and Big-O estimates supplement—not replace—timings.
 
-Every Python file has a purpose docstring, function/class contract docstrings, typed parameters and a generated header mapping definitions, parameters and assigned variables to exact lines. PowerShell/Bash headers document purpose/parameters and generated symbol positions; PowerShell functions also contain help/parameter explanations. Use comments to label safety boundaries and non-obvious semantics, not repeat each statement. Run formatting **before** generating maps; CI rejects stale maps or missing Python function/class contracts.
+Every Python file has a purpose docstring, function/class contract docstrings, typed parameters and a generated header mapping definitions, parameters and assigned variables to exact lines. PowerShell/Bash headers document purpose/parameters and generated symbol positions; PowerShell functions also contain help/parameter explanations. SQL/YAML headers map columns/tables and policy/workflow parameters/control IDs/expressions to exact positions. Use comments to label safety boundaries and non-obvious semantics, not repeat each statement. Run formatting **before** generating maps; CI rejects stale maps or missing Python function/class contracts.
 
 ```bash
 python -m ruff check --fix .

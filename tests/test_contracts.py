@@ -1,52 +1,55 @@
 """Strict contract rejection, semantic hashing and YAML/JSON misuse tests. Created by Jason Stys."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# definition: test_integer_exact — line 77
-# parameter: value — line 77
-# definition: test_text_contract — line 84
-# parameter: value — line 84
-# definition: test_utc_only — line 100
-# parameter: value — line 100
-# definition: test_naive_clock — line 106
-# definition: test_exact_object — line 113
-# parameter: value — line 113
-# definition: test_bad_json — line 123
-# parameter: content — line 123
-# definition: test_bad_yaml — line 143
-# parameter: content — line 143
-# definition: test_bad_snapshot_top — line 161
-# parameter: field — line 161
-# parameter: value — line 161
-# variable: data — line 163
-# definition: test_bad_fact — line 180
-# parameter: updates — line 180
-# variable: data — line 182
-# definition: test_bool_is_not_integer — line 188
-# variable: bad — line 190
-# variable: key — line 190
-# variable: platform — line 190
-# variable: data — line 195
-# definition: test_digest_order_stability — line 201
-# variable: data — line 203
-# variable: reordered — line 204
-# variable: altered — line 206
-# definition: test_policy_rejection — line 227
-# parameter: mutation — line 227
-# parameter: tmp_path — line 227
-# variable: data — line 229
-# variable: control — line 230
-# variable: path — line 253
-# definition: test_exception_rejection — line 262
-# parameter: mutation — line 262
-# parameter: policy — line 262
-# parameter: tmp_path — line 262
-# variable: data — line 264
-# variable: row — line 265
-# variable: path — line 280
-# definition: test_regular_bounded_files — line 286
-# parameter: tmp_path — line 286
-# variable: path — line 288
-# variable: limit — line 291
-# variable: target — line 291
+# definition: test_integer_exact — line 80
+# parameter: value — line 80
+# definition: test_text_contract — line 87
+# parameter: value — line 87
+# definition: test_utc_only — line 103
+# parameter: value — line 103
+# definition: test_naive_clock — line 109
+# definition: test_non_unicode_scalar_text — line 116
+# parameter: value — line 116
+# variable: data — line 120
+# definition: test_exact_object — line 127
+# parameter: value — line 127
+# definition: test_bad_json — line 137
+# parameter: content — line 137
+# definition: test_bad_yaml — line 157
+# parameter: content — line 157
+# definition: test_bad_snapshot_top — line 175
+# parameter: field — line 175
+# parameter: value — line 175
+# variable: data — line 177
+# definition: test_bad_fact — line 194
+# parameter: updates — line 194
+# variable: data — line 196
+# definition: test_bool_is_not_integer — line 202
+# variable: bad — line 204
+# variable: key — line 204
+# variable: platform — line 204
+# variable: data — line 209
+# definition: test_digest_order_stability — line 215
+# variable: data — line 217
+# variable: reordered — line 218
+# variable: altered — line 220
+# definition: test_policy_rejection — line 241
+# parameter: mutation — line 241
+# parameter: tmp_path — line 241
+# variable: data — line 243
+# variable: control — line 244
+# variable: path — line 267
+# definition: test_exception_rejection — line 276
+# parameter: mutation — line 276
+# parameter: policy — line 276
+# parameter: tmp_path — line 276
+# variable: data — line 278
+# variable: row — line 279
+# variable: path — line 294
+# definition: test_regular_bounded_files — line 300
+# parameter: tmp_path — line 300
+# variable: path — line 302
+# variable: limit — line 305
+# variable: target — line 305
 # END CODE MAP
 
 import json
@@ -107,6 +110,17 @@ def test_naive_clock() -> None:
     """Library callers must provide a UTC-aware datetime too."""
     with pytest.raises(Rejected):
         utc(datetime(2026, 1, 1))
+
+
+@pytest.mark.parametrize("value", ["\ud800", "\udfff", "unsafe\x7f"])
+def test_non_unicode_scalar_text(value: str) -> None:
+    """Lone surrogate and DEL text cannot reach UTF-8 report writes, even from valid escaped JSON."""
+    with pytest.raises(Rejected):
+        text(value)
+    data = healthy("linux")
+    data["facts"]["ssh.password_auth"]["source"] = value
+    with pytest.raises(Rejected):
+        snapshot_data(data)
 
 
 @pytest.mark.parametrize("value", [{}, {"a": 1, "extra": 2}, [], None])

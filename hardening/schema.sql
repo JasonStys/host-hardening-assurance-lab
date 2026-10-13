@@ -1,6 +1,25 @@
 -- Jason Stys: normalized, indexed assurance evidence; parameterized inserts in report.py.
 -- Tables: assessment (identity/digests), finding (control result, evidence/review).
 -- Columns and variables are documented in docs/contracts.md; no dynamic SQL identifiers.
+-- BEGIN CODE MAP (generated; python scripts/code_map.py)
+-- table: assessment — line 24
+-- column: id — line 25
+-- column: host_id — line 26
+-- column: platform — line 26
+-- column: policy_digest — line 27
+-- column: snapshot_digest — line 27
+-- column: observed_at — line 28
+-- column: as_of — line 28
+-- table: finding — line 30
+-- column: assessment_id — line 31
+-- column: control_id — line 32
+-- column: status — line 32
+-- column: value_json — line 34
+-- column: expected_json — line 34
+-- column: source — line 35
+-- column: review — line 35
+-- column: exception_json — line 35
+-- END CODE MAP
 PRAGMA foreign_keys = ON;
 CREATE TABLE assessment (
   id INTEGER PRIMARY KEY CHECK(id=1),
