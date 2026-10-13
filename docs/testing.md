@@ -37,7 +37,7 @@ pwsh -NoProfile -File scripts/check-powershell.ps1
 
 Core tests run with warnings as errors and minimum **90% branch-inclusive** coverage. PowerShell 7 absence explicitly skips its four execution tests, but CI separately requires PowerShell parsing on every OS, so no hosted lane silently omits the language. Symlink tests skip only where OS permission denies creating links; Linux/macOS CI must execute them. Every expected insecure sample is asserted by a test rather than masking CLI exit 1.
 
-Actions matrix: Ubuntu Python 3.12 and 3.14; Windows/macOS Python 3.14. Windows also runs an explicitly acknowledged read-only disposable-worker collector and validates the normalized contract; no real-user host state is inspected or published. CI stores logs/job summaries only, not artifacts/caches.
+Actions matrix: Ubuntu Python 3.12 and 3.14; Windows/macOS 15 Intel Python 3.14. The explicit standard macOS Intel pool preserves all tests while avoiding the ARM64 capacity constraint observed in the initial follow-up run. Windows also runs an explicitly acknowledged read-only disposable-worker collector and validates the normalized contract; no real-user host state is inspected or published. CI stores logs/job summaries only, not artifacts/caches.
 
 ## Measured evidence and gaps
 

@@ -38,3 +38,5 @@ No claim is made that Big-O predicts real elapsed time or that an in-memory benc
 ## Follow-up gates
 
 Any future enforcement requires a separate accepted ADR, explicit owner approval, tested recovery access, staging, maintenance windows, compatibility tests and rollback. A central service additionally requires authenticated collection, tenant isolation, signed evidence and private transport. Neither is authorized or implemented here.
+
+CI runner note (2026-10-13): a follow-up `macos-latest` job never acquired an ARM64 worker after provider-reported capacity constraints. The explicit supported standard `macos-15-intel` pool was selected, preserving the same complete tests and portable PowerShell checksum verification. This improves OS-label reproducibility but is not a guarantee against future provider capacity failures. No paid/larger pool or unrelated workflow was changed.
