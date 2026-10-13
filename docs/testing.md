@@ -16,6 +16,7 @@ The highest risks are false security confidence, unsafe collection, silently ign
 | Integration/E2E | Real `python -m hardening` subprocess, CLI exits/output, JSON/HTML/SQLite export, cross-platform PowerShell execution |
 | Performance | 10,000 snapshots / 50,000 checks; in-memory elapsed time only; no flaky hardware-dependent throughput gate |
 | CI/supply chain | Hash installation, Ruff, strict mypy, exact symbol maps, exhaustive README inventory, advisory/history/config scans, CodeQL |
+| Bootstrap resilience | Offline transport/HTTP retries, maximum attempts, partial-byte discard, size limits, permanent error/overwrite refusal and resource closure |
 
 Hypothesis uses its bounded default example count (100 per property here), with shrinking/replay of failures. This is not exhaustive fuzzing of all OS parsers. A source guard cannot independently prove scripts harmless; it complements command AST validation and human review.
 
