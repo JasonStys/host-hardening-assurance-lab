@@ -85,6 +85,7 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Measured local in-memory throughput with scope and environment, not a capacity guarantee. |
 | [docs/reports/demo.html](docs/reports/demo.html) | Escaped, inert synthetic Linux drift report; no real host evidence. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Deterministic synthetic report with policy/snapshot digests and exception details. |
+| [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/review.md](docs/reports/review.md) | Author review and release checklist. |
 | [docs/reports/validation.md](docs/reports/validation.md) | Validation results. |
 | [docs/research.md](docs/research.md) | Primary-source research and design rationale. |
