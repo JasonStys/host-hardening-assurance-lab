@@ -1,0 +1,1 @@
+{"schema":1,"hosts":[{"host_id":"lab-linux-01","platform":"linux","owner":"Payments platform"},{"host_id":"lab-windows-01","platform":"windows","owner":"Dispatch operations"},{"host_id":"lab-linux-02","platform":"linux","owner":"Warehouse systems"}]}
