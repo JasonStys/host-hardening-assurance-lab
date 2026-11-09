@@ -14,6 +14,7 @@ This defensive portfolio project answers: **What do we actually know about this 
 - Exact host/control/policy exceptions with reason, asserted reviewer, ticket and a maximum 90-day expiry. EXCEPTED remains a deviation, not a pass, and cannot hide unknown evidence.
 - Deterministic assessments with explicit evaluation clocks, semantic policy/snapshot digests, conservative weighted pass rate and separately reported evidence coverage.
 - Same-host/same-policy drift separates regressions, evidence gaps/restoration, deviations and changed-but-still-passing observations.
+- [Expected-inventory fleet review](docs/fleet.md): per-platform/policy counts, complete original host assessments, owner-routed evidence refresh and deviation queues. Missing hosts remain UNKNOWN; duplicate and out-of-scope evidence is rejected.
 - New-directory-only JSON, offline HTML and indexed STRICT SQLite reports. Escaped text, no scripts/ads/analytics or automatic uploads.
 - Opt-in read-only collectors: Python/Bash for Linux file evidence; PowerShell 7 for five allowlisted Windows cmdlet properties. Synthetic mode does not query the host.
 - Cross-platform tests, property-based checks, measured benchmarks, hash-locked dependencies, history secret scanning and security-extended CodeQL.
@@ -82,9 +83,12 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [docs/contracts.md](docs/contracts.md) | Evidence contracts, scoring and drift. |
 | [docs/controls.md](docs/controls.md) | Control applicability and honest limitations. |
 | [docs/development.md](docs/development.md) | Coding, comments and maintenance guidelines. |
+| [docs/fleet.md](docs/fleet.md) | Expected inventory and evidence refresh. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Measured local in-memory throughput with scope and environment, not a capacity guarantee. |
 | [docs/reports/demo.html](docs/reports/demo.html) | Escaped, inert synthetic Linux drift report; no real host evidence. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Deterministic synthetic report with policy/snapshot digests and exception details. |
+| [docs/reports/dependency-repair-2026-11-09.md](docs/reports/dependency-repair-2026-11-09.md) | CI-discovered dependency repair — 2026-11-09. |
+| [docs/reports/fleet-2026-11-09.md](docs/reports/fleet-2026-11-09.md) | Expected-inventory workflow validation — 2026-11-09. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/review.md](docs/reports/review.md) | Author review and release checklist. |
 | [docs/reports/validation.md](docs/reports/validation.md) | Validation results. |
@@ -93,6 +97,7 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [docs/security.md](docs/security.md) | Threat model, privacy and residual risk. |
 | [docs/testing.md](docs/testing.md) | Risk-based validation and reproducibility. |
 | [examples/exceptions.json](examples/exceptions.json) | Explicit fictional host/control/policy deviation with one-day expiry. |
+| [examples/fleet-inventory.json](examples/fleet-inventory.json) | Fictional fleet inventory configuration evidence; no private host data. |
 | [examples/linux-drifted.json](examples/linux-drifted.json) | Fictional linux drifted configuration evidence; no private host data. |
 | [examples/linux-healthy.json](examples/linux-healthy.json) | Fictional linux healthy configuration evidence; no private host data. |
 | [examples/linux-unknown.json](examples/linux-unknown.json) | Fictional linux unknown configuration evidence; no private host data. |
@@ -106,6 +111,7 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [hardening/contracts.py](hardening/contracts.py) | Strict, bounded policy, snapshot and exception contracts. Created by Jason Stys. |
 | [hardening/drift.py](hardening/drift.py) | Evidence-aware baseline drift without comparing incompatible hosts/policies. Created by Jason Stys. |
 | [hardening/engine.py](hardening/engine.py) | Deterministic typed assessment, freshness and expiring deviations. Created by Jason Stys. |
+| [hardening/fleet.py](hardening/fleet.py) | Expected-inventory assessment and owner-routed evidence refresh; read-only. Created by Jason Stys. |
 | [hardening/io.py](hardening/io.py) | Bounded regular-file, strict JSON and safe YAML readers. Created by Jason Stys. |
 | [hardening/report.py](hardening/report.py) | New-directory-only JSON, inert HTML and parameterized SQLite evidence exports. Created by Jason Stys. |
 | [hardening/schema.sql](hardening/schema.sql) | STRICT normalized SQLite report schema and status index. |
@@ -132,6 +138,7 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [tests/test\_collect.py](tests/test_collect.py) | Read-only collector fixture tests, SSH ambiguity and actual PowerShell synthetic execution. Jason Stys. |
 | [tests/test\_contracts.py](tests/test_contracts.py) | Strict contract rejection, semantic hashing and YAML/JSON misuse tests. Created by Jason Stys. |
 | [tests/test\_engine.py](tests/test_engine.py) | Baseline, independent oracle, property checks, freshness and exception-boundary tests. Jason Stys. |
+| [tests/test\_fleet.py](tests/test_fleet.py) | Independent inventory completeness, policy grouping and owner workflow tests. Created by Jason Stys. |
 | [tests/test\_maintenance.py](tests/test_maintenance.py) | Generated symbol-map, README escaping and fixture reproducibility regressions. Created by Jason Stys. |
 | [tests/test\_report\_cli.py](tests/test_report_cli.py) | End-to-end CLI exits, inert exports, SQL persistence and path safety. Created by Jason Stys. |
 | [tools.lock.json](tools.lock.json) | Official scanner release URLs and verified SHA-256 digests. |
