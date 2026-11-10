@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "project": "host-hardening-assurance-lab",
+  "author": "Jason Stys",
+  "editionDate": "2026-11-09",
+  "sourceBaseline": "53068a5cdc70f733211910afd199bb1fd4fac85e",
+  "sourceUrl": "https://github.com/JasonStys/host-hardening-assurance-lab/tree/53068a5cdc70f733211910afd199bb1fd4fac85e",
+  "functionalEvidenceBaseline": "53068a5cdc70f733211910afd199bb1fd4fac85e",
+  "evidenceObservedAt": "2026-11-10T05:25:40.628667+00:00",
+  "workflowEvidence": [
+    {
+      "conclusion": "success",
+      "databaseId": 42697099410,
+      "event": "push",
+      "headSha": "53068a5cdc70f733211910afd199bb1fd4fac85e",
+      "name": "CodeQL",
+      "status": "completed",
+      "url": "https://github.com/JasonStys/host-hardening-assurance-lab/actions/runs/42697099410"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 42697099400,
+      "event": "push",
+      "headSha": "53068a5cdc70f733211910afd199bb1fd4fac85e",
+      "name": "Validate",
+      "status": "completed",
+      "url": "https://github.com/JasonStys/host-hardening-assurance-lab/actions/runs/42697099400"
+    }
+  ],
+  "summary": "Review expected host inventory, unknown missing evidence, policy/platform counts and owner refresh/deviation queues.",
+  "rationale": "Prevents absent hosts or stale observations from inflating assurance results.",
+  "limitations": [
+    "Completeness of the declared host inventory is the operator's responsibility.",
+    "Each run uses one exact baseline; unlike platform counts remain separate rather than a pooled assurance score.",
+    "Owner/reviewer labels are local assertions, not authenticated approvals or a compliance certification."
+  ],
+  "documents": [
+    {
+      "filename": "project-guide.docx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "bytes": 44224,
+      "sha256": "f4079ac6521d39f8175d72810c97fd9f93d16bd8a491909fdaefac9f851b9cb1",
+      "sourceBaseline": "53068a5cdc70f733211910afd199bb1fd4fac85e",
+      "visualReview": {
+        "approved": true,
+        "method": "Every rendered page individually viewed at readable original resolution",
+        "pageCount": 5,
+        "renderedPageSha256": {
+          "page-1.png": "2ceb7502e1cb92197a0449ce0eb71f83ff311317388e9eea0d94bb4cb37de5a5",
+          "page-2.png": "709e06fd5450fd1cb0c90d403cb09cebaf3149e80afd4455b22db03d074a8c52",
+          "page-3.png": "9768393a7b58a2c7c63aec43d756386d2ca4e3c905836a0e3325f0cd92946a7b",
+          "page-4.png": "3bd6184eb99d03cec9dc4306f8553b44efcb5ee87a9416848d17dfd290fed84f",
+          "page-5.png": "2b1c0e055367776750f2e696729d59fb4ebc2414f2bb211d3f7ef73234717c56"
+        }
+      }
+    }
+  ],
+  "scope": "Reviewed documentation editions of the cited source. Checksums identify bytes, not authorship. Historical measurements retain their own dates; integration CI must be checked separately."
+}
