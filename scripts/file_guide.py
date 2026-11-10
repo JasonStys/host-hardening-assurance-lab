@@ -4,23 +4,23 @@
 # variable: BEGIN — line 32
 # variable: END — line 33
 # variable: SPECIAL — line 34
-# definition: description — line 59
-# parameter: path — line 59
-# variable: content — line 69
-# variable: summary — line 70
-# definition: label — line 77
-# parameter: path — line 77
-# definition: main — line 82
-# variable: parser — line 84
-# variable: args — line 86
-# variable: files — line 87
-# variable: rows — line 95
-# variable: path — line 98
+# definition: description — line 61
+# parameter: path — line 61
+# variable: content — line 71
+# variable: summary — line 72
+# definition: label — line 79
+# parameter: path — line 79
+# definition: main — line 84
+# variable: parser — line 86
+# variable: args — line 88
+# variable: files — line 89
+# variable: rows — line 97
 # variable: path — line 100
-# variable: original — line 101
-# variable: first — line 102
-# variable: last — line 102
-# variable: expected — line 103
+# variable: path — line 102
+# variable: original — line 103
+# variable: first — line 104
+# variable: last — line 104
+# variable: expected — line 105
 # END CODE MAP
 
 import argparse
@@ -32,6 +32,8 @@ ROOT = Path(__file__).resolve().parents[1]
 BEGIN = "<!-- BEGIN FILE GUIDE -->"
 END = "<!-- END FILE GUIDE -->"
 SPECIAL = {
+    "docs/reports/project-guide.docx": "Reviewed Word project guide bound to the documented source revision.",
+    "docs/reports/publications.json": "Exact Office digests, visual review scopes and immutable source baselines.",
     ".gitattributes": "Portable LF text handling; SQLite outputs are binary.",
     ".gitignore": "Keeps environments, keys, output reports and private host evidence out of Git.",
     "LICENSE": "MIT license for authored source and synthetic fixtures.",

@@ -84,12 +84,16 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [docs/controls.md](docs/controls.md) | Control applicability and honest limitations. |
 | [docs/development.md](docs/development.md) | Coding, comments and maintenance guidelines. |
 | [docs/fleet.md](docs/fleet.md) | Expected inventory and evidence refresh. |
+| [docs/handbook.md](docs/handbook.md) | Host Hardening Assurance Lab handbook. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Measured local in-memory throughput with scope and environment, not a capacity guarantee. |
 | [docs/reports/demo.html](docs/reports/demo.html) | Escaped, inert synthetic Linux drift report; no real host evidence. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Deterministic synthetic report with policy/snapshot digests and exception details. |
 | [docs/reports/dependency-repair-2026-11-09.md](docs/reports/dependency-repair-2026-11-09.md) | CI-discovered dependency repair — 2026-11-09. |
+| [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
 | [docs/reports/fleet-2026-11-09.md](docs/reports/fleet-2026-11-09.md) | Expected-inventory workflow validation — 2026-11-09. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
+| [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed Word project guide bound to the documented source revision. |
+| [docs/reports/publications.json](docs/reports/publications.json) | Exact Office digests, visual review scopes and immutable source baselines. |
 | [docs/reports/review.md](docs/reports/review.md) | Author review and release checklist. |
 | [docs/reports/validation.md](docs/reports/validation.md) | Validation results. |
 | [docs/research.md](docs/research.md) | Primary-source research and design rationale. |
@@ -144,3 +148,9 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [tools.lock.json](tools.lock.json) | Official scanner release URLs and verified SHA-256 digests. |
 
 <!-- END FILE GUIDE -->
+
+## Documentation editions
+
+Start with the [organized handbook](docs/handbook.md) for current usage, design, security and test guidance. Reviewed downloadable editions: [project-guide.docx](docs/reports/project-guide.docx).
+
+[Publication identities and source scope](docs/reports/publications.json) · [Documentation validation record](docs/reports/documentation-refresh-2026-11-09.md). Historical results retain their own tested revision and date.
