@@ -1,62 +1,67 @@
 """Exercise the same real frozen Tk controls/core on an explicit synthetic profile; no arbitrary scripts. Jason Stys."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# definition: capture — line 82
-# parameter: target — line 82
-# parameter: window — line 82
-# variable: load — line 88
-# variable: gdi — line 89
-# variable: user — line 89
-# variable: pointer — line 90
-# variable: arguments — line 91
-# variable: library — line 91
-# variable: name — line 91
-# variable: result — line 91
-# variable: function — line 109
-# variable: handle — line 112
-# variable: rectangle — line 113
-# variable: height — line 116
-# variable: width — line 116
-# variable: source — line 119
-# variable: destination — line 120
-# variable: bitmap — line 121
-# variable: previous — line 122
-# variable: pixels — line 127
-# variable: header — line 128
-# variable: raw — line 135
-# variable: scanlines — line 136
-# variable: row — line 137
-# variable: column — line 139
-# variable: offset — line 140
-# definition: chunk — line 143
-# parameter: data — line 143
-# parameter: name — line 143
-# definition: exercise — line 165
-# parameter: output — line 165
-# parameter: reopen — line 165
-# parameter: window — line 165
-# variable: deadline — line 168
-# variable: receipt — line 169
-# definition: finish — line 187
-# parameter: error — line 187
-# variable: data — line 194
-# variable: name — line 194
-# variable: row — line 196
-# definition: checked — line 203
-# parameter: callback — line 203
-# definition: wait — line 211
-# parameter: callback — line 211
-# definition: assessed — line 221
-# variable: report — line 223
-# variable: key — line 224
-# definition: drifted — line 242
-# variable: drift — line 244
-# definition: fleet — line 254
-# variable: result — line 256
-# variable: parent — line 273
-# variable: exported — line 277
-# variable: path — line 278
-# definition: rejected — line 287
-# definition: begin — line 294
+# definition: capture — line 87
+# parameter: target — line 87
+# parameter: window — line 87
+# variable: load — line 93
+# variable: gdi — line 94
+# variable: user — line 94
+# variable: pointer — line 95
+# variable: arguments — line 96
+# variable: library — line 96
+# variable: name — line 96
+# variable: result — line 96
+# variable: function — line 114
+# variable: handle — line 117
+# variable: rectangle — line 118
+# variable: height — line 121
+# variable: width — line 121
+# variable: source — line 124
+# variable: destination — line 125
+# variable: bitmap — line 126
+# variable: previous — line 127
+# variable: pixels — line 132
+# variable: header — line 133
+# variable: raw — line 140
+# variable: scanlines — line 141
+# variable: row — line 142
+# variable: column — line 144
+# variable: offset — line 145
+# definition: chunk — line 148
+# parameter: data — line 148
+# parameter: name — line 148
+# definition: exercise — line 170
+# parameter: output — line 170
+# parameter: reopen — line 170
+# parameter: window — line 170
+# variable: deadline — line 173
+# variable: receipt — line 174
+# definition: finish — line 192
+# parameter: error — line 192
+# variable: data — line 199
+# variable: name — line 199
+# variable: row — line 201
+# definition: checked — line 208
+# parameter: callback — line 208
+# definition: wait — line 217
+# parameter: callback — line 217
+# definition: assessed — line 227
+# variable: report — line 229
+# variable: key — line 230
+# definition: drifted — line 249
+# variable: drift — line 251
+# definition: fleet — line 261
+# variable: result — line 263
+# variable: parent — line 280
+# variable: exported — line 284
+# variable: path — line 285
+# definition: rejected — line 294
+# definition: layout — line 301
+# variable: original — line 303
+# variable: button — line 326
+# variable: name — line 326
+# variable: button — line 331
+# definition: begin — line 347
 # END CODE MAP
 
 from __future__ import annotations
@@ -206,6 +211,7 @@ def exercise(window: Workbench, output: Path, reopen: bool) -> None:
             callback()
         except Exception:
             receipt["failure"] = "native acceptance assertion or operation failed"
+            receipt["failure_stage"] = callback.__name__
             finish(True)
 
     def wait(callback: Any) -> None:
@@ -231,6 +237,7 @@ def exercise(window: Workbench, output: Path, reopen: bool) -> None:
         assert len(window.table.get_children()) == 1
         window.table.selection_set("0")
         window.inspect()
+        layout()
         capture(window, output / "offline-control-review.png")
         receipt["steps"].append("real-offline-assessment-exception-remains-deviation")
         window.prepared.set(project.SCENARIOS[1])
@@ -290,6 +297,52 @@ def exercise(window: Workbench, output: Path, reopen: bool) -> None:
         assert "rejected" in window.status.get().lower()
         receipt["steps"].append("impossible-clock-retained-prior-evidence")
         finish()
+
+    def layout() -> None:
+        """Real minimum-width layout keeps every lifecycle control fully visible even with long status text."""
+        original = window.status.get()
+        window.root.geometry("980x700")
+        window.status.set(
+            original
+            + " Synthetic long-message layout check: existing evidence remains available and Exit waits for the owned operation."
+        )
+        window.root.update()
+        receipt["layout"] = {
+            "root": [window.root.winfo_width(), window.root.winfo_height()],
+            "status": [
+                window.status_label.winfo_width(),
+                window.status_label.winfo_height(),
+                window.status_label.winfo_reqheight(),
+                int(window.status_label.cget("wraplength")),
+            ],
+            "buttons": {
+                name: [
+                    button.winfo_width(),
+                    button.winfo_reqwidth(),
+                    button.winfo_rootx() - window.root.winfo_rootx(),
+                    button.winfo_rooty() - window.root.winfo_rooty(),
+                    button.winfo_height(),
+                ]
+                for name, button in window.footer_buttons.items()
+            },
+        }
+        assert int(window.status_label.cget("wraplength")) <= window.status_label.winfo_width()
+        assert window.status_label.winfo_height() >= window.status_label.winfo_reqheight()
+        for button in window.footer_buttons.values():
+            assert button.winfo_width() >= button.winfo_reqwidth()
+            assert button.winfo_rootx() >= window.root.winfo_rootx()
+            assert (
+                button.winfo_rootx() + button.winfo_width()
+                <= window.root.winfo_rootx() + window.root.winfo_width()
+            )
+            assert (
+                button.winfo_rooty() + button.winfo_height()
+                <= window.root.winfo_rooty() + window.root.winfo_height()
+            )
+        window.status.set(original)
+        window.root.geometry("1260x860")
+        window.root.update()
+        receipt["steps"].append("real-minimum-width-long-status-all-lifecycle-controls-visible")
 
     def begin() -> None:
         """Exercise actual permission/Run/history widgets, with no live collector path in this application."""

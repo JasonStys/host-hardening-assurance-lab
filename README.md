@@ -101,6 +101,7 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
 | [docs/reports/fleet-2026-11-09.md](docs/reports/fleet-2026-11-09.md) | Expected-inventory workflow validation — 2026-11-09. |
 | [docs/reports/native-application-2026-11-10.md](docs/reports/native-application-2026-11-10.md) | Native offline assurance validation — 2026-11-10. |
+| [docs/reports/native-reader-boundary-2026-11-10.md](docs/reports/native-reader-boundary-2026-11-10.md) | Native reader and lifecycle-layout follow-up — 2026-11-10. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed Word project guide bound to the documented source revision. |
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact Office digests, visual review scopes and immutable source baselines. |
@@ -165,6 +166,7 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [tests/test\_engine.py](tests/test_engine.py) | Baseline, independent oracle, property checks, freshness and exception-boundary tests. Jason Stys. |
 | [tests/test\_fleet.py](tests/test_fleet.py) | Independent inventory completeness, policy grouping and owner workflow tests. Created by Jason Stys. |
 | [tests/test\_maintenance.py](tests/test_maintenance.py) | Generated symbol-map, README escaping and fixture reproducibility regressions. Created by Jason Stys. |
+| [tests/test\_reader\_races.py](tests/test_reader_races.py) | Actual opened-device and POSIX regular-to-FIFO replacement regressions for bounded readers. Jason Stys. |
 | [tests/test\_report\_cli.py](tests/test_report_cli.py) | End-to-end CLI exits, inert exports, SQL persistence and path safety. Created by Jason Stys. |
 | [tools.lock.json](tools.lock.json) | Official scanner release URLs and verified SHA-256 digests. |
 
