@@ -4,23 +4,23 @@
 # variable: BEGIN — line 32
 # variable: END — line 33
 # variable: SPECIAL — line 34
-# definition: description — line 68
-# parameter: path — line 68
-# variable: content — line 78
-# variable: summary — line 79
-# definition: label — line 86
-# parameter: path — line 86
-# definition: main — line 91
-# variable: parser — line 93
-# variable: args — line 95
-# variable: files — line 96
-# variable: rows — line 104
-# variable: path — line 107
+# definition: description — line 70
+# parameter: path — line 70
+# variable: content — line 80
+# variable: summary — line 81
+# definition: label — line 88
+# parameter: path — line 88
+# definition: main — line 93
+# variable: parser — line 95
+# variable: args — line 97
+# variable: files — line 98
+# variable: rows — line 106
 # variable: path — line 109
-# variable: original — line 110
-# variable: first — line 111
-# variable: last — line 111
-# variable: expected — line 112
+# variable: path — line 111
+# variable: original — line 112
+# variable: first — line 113
+# variable: last — line 113
+# variable: expected — line 114
 # END CODE MAP
 
 import argparse
@@ -32,6 +32,8 @@ ROOT = Path(__file__).resolve().parents[1]
 BEGIN = "<!-- BEGIN FILE GUIDE -->"
 END = "<!-- END FILE GUIDE -->"
 SPECIAL = {
+    "docs/reports/windows-application-guide-1.1.1.docx": "Reviewed current 1.1.1 installed-app guide: actual screenshots, workflow, immutable code and measured limits.",
+    "docs/reports/windows-application-guide-1.1.1.json": "Current Word, screenshot, source and individually reviewed rendered-page hashes.",
     "docs/reports/windows-application-guide-1.1.0.docx": "Individually reviewed four-page installed application guide with actual screenshots, worked workflow, immutable source excerpts and limits.",
     "docs/reports/windows-application-guide-1.1.0.json": "Exact Word, actual screenshot and reviewed page digests plus observed source-specific validation results.",
     "docs/screenshots/installed-1.1.0/offline-control-review.png": "Actual installed application synthetic-profile screenshot: Offline control and exception review.",

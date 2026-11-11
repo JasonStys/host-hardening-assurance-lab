@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "repository": "host-hardening-assurance-lab",
+  "runtimeVersion": "1.1.1",
+  "runtimeSource": "8c63f7b01b84b87fd02fa1c379cbf4ed908b7bc1",
+  "createdAt": "2026-11-11T09:48:51.875Z",
+  "author": "Jason Stys",
+  "document": "windows-application-guide-1.1.1.docx",
+  "sha256": "6d58f1b7f2d30de2a23f4efe167ff96871bfa1e7aec7beb7770eca697f885de0",
+  "screenshots": [
+    {
+      "file": "offline-control-review.png",
+      "sha256": "636c2c1292e0218802677b3d6d60af77681898b60435d03d2ec81b73fb9b7220",
+      "width": 1276,
+      "height": 899,
+      "caption": "The installed workbench shows a supplied SSH-password deviation as EXCEPTED and retains the dated exception and evidence reason. Its displayed synthetic snapshot has 2 PASS, 2 FAIL, 0 UNKNOWN and 1 EXCEPTED."
+    },
+    {
+      "file": "missing-host-refresh.png",
+      "sha256": "f14d72036671337efbdfff901f78bd940a3a8323c43ab1b5aa9c1a46fd728921",
+      "width": 1276,
+      "height": 899,
+      "caption": "The installed application reviews expected-host and missing-evidence results. Missing or stale observations remain visible rather than increasing the assessed-host assurance count."
+    }
+  ],
+  "snippets": [
+    {
+      "file": "hardening/desktop_state.py",
+      "first": 208,
+      "last": 219,
+      "sha256": "5cd749a383ce48c87d8e5c58182332bdacce5cc7c5547763a0fd9f7ca524c858",
+      "url": "https://github.com/JasonStys/host-hardening-assurance-lab/blob/8c63f7b01b84b87fd02fa1c379cbf4ed908b7bc1/hardening/desktop_state.py#L208"
+    }
+  ],
+  "observedTests": [
+    {
+      "name": "Actual installed workflows",
+      "observed": "Full original domain, review and export controls passed two normal native launches; all 3 saved bundles retained exact original bytes.",
+      "result": "Passed"
+    },
+    {
+      "name": "Old-to-new profile",
+      "observed": "The actual installed 1.1.0 app created a synthetic profile; installed 1.1.1 reopened it and retained all 3 exact bundles without reset.",
+      "result": "Passed"
+    },
+    {
+      "name": "Source and distribution",
+      "observed": "Exact-main workflows and processed CodeQL passed with zero open main alerts. Five downloaded assets and installed files matched their verified SHA-256 identities.",
+      "result": "Verified"
+    },
+    {
+      "name": "PC and links",
+      "observed": "Existing links were backed up and retargeted with settings retained. Normal profiles and Docker were unchanged; default-profile shortcut activation remains separately untested.",
+      "result": "Verified"
+    }
+  ],
+  "visualReview": {
+    "approved": true,
+    "ooxmlSchema": "passed",
+    "pages": [
+      {
+        "page": 1,
+        "sha256": "287fabbba281f9a58a4465670f0f0f38f3134d6fda42d63b1186334a3a275a19",
+        "approved": true,
+        "method": "Individually inspected final page content"
+      },
+      {
+        "page": 2,
+        "sha256": "46dc2440bb772cca4034cdea221c3fc1e790f40e61b03152e32eded8edf6db82",
+        "approved": true,
+        "method": "Exact pixel identity carries prior individual root/peer inspection of r2"
+      },
+      {
+        "page": 3,
+        "sha256": "ec4c76bb3a0197db63b8809bb4294716063ef1083db2151c2ae4056404e8888d",
+        "approved": true,
+        "method": "Exact pixel identity carries prior individual root/peer inspection of r2"
+      },
+      {
+        "page": 4,
+        "sha256": "6997720fe5a13fea5b4d22229988be7402d41c50e0061ee4f0c20c246dfab8a8",
+        "approved": true,
+        "method": "Exact pixel identity carries prior individual root/peer inspection of r2"
+      }
+    ],
+    "checkedUtc": "2026-11-11T10:22:45.772060+00:00",
+    "method": "All final page content individually inspected by root or named peers; only exact pixel identity carries prior individual inspection."
+  }
+}
