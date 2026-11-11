@@ -70,6 +70,14 @@ Native Windows command equivalents and measured results are in [testing](docs/te
 
 Start with [architecture/ADR](docs/architecture.md), [contracts and scoring](docs/contracts.md), [control applicability](docs/controls.md), [threat model](docs/security.md), [research](docs/research.md), and [development guidelines](docs/development.md). Reports concern selected configuration facts only, not network filtering effectiveness, effective SSH daemon state or overall host security.
 
+## Native profile storage correction
+
+Version 1.1.1 rejects pre-existing linked/nonregular fixed profile and SQLite
+sidecar entries before initialization can write through an alias. Ordinary
+recovery files and existing profile schemas remain supported; no data is reset.
+See the [confirmed fixture, recovery tests and scope](docs/reports/profile-admission-2026-11-11.md).
+Earlier native releases and documentation retain their own dated evidence.
+
 ## File guide
 
 Every tracked file is summarized below. Python, shell, SQL and YAML headers include generated exact symbol positions, enforced in CI.
@@ -104,6 +112,7 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [docs/reports/native-application-2026-11-10.md](docs/reports/native-application-2026-11-10.md) | Native offline assurance validation — 2026-11-10. |
 | [docs/reports/native-reader-boundary-2026-11-10.md](docs/reports/native-reader-boundary-2026-11-10.md) | Native reader and lifecycle-layout follow-up — 2026-11-10. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
+| [docs/reports/profile-admission-2026-11-11.md](docs/reports/profile-admission-2026-11-11.md) | Fixed profile entry admission — November 11, 2026. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed Word project guide bound to the documented source revision. |
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact Office digests, visual review scopes and immutable source baselines. |
 | [docs/reports/review.md](docs/reports/review.md) | Author review and release checklist. |
@@ -171,6 +180,7 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [tests/test\_engine.py](tests/test_engine.py) | Baseline, independent oracle, property checks, freshness and exception-boundary tests. Jason Stys. |
 | [tests/test\_fleet.py](tests/test_fleet.py) | Independent inventory completeness, policy grouping and owner workflow tests. Created by Jason Stys. |
 | [tests/test\_maintenance.py](tests/test_maintenance.py) | Generated symbol-map, README escaping and fixture reproducibility regressions. Created by Jason Stys. |
+| [tests/test\_profile\_admission.py](tests/test_profile_admission.py) | Actual pre-existing alias refusal and ordinary SQLite recovery continuity. Jason Stys. |
 | [tests/test\_reader\_races.py](tests/test_reader_races.py) | Actual opened-device and POSIX regular-to-FIFO replacement regressions for bounded readers. Jason Stys. |
 | [tests/test\_report\_cli.py](tests/test_report_cli.py) | End-to-end CLI exits, inert exports, SQL persistence and path safety. Created by Jason Stys. |
 | [tools.lock.json](tools.lock.json) | Official scanner release URLs and verified SHA-256 digests. |

@@ -78,7 +78,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PRODUCT = "host-hardening-assurance-lab"
 TITLE = "Host Hardening Assurance Workbench"
 PROFILE = "HostHardeningAssuranceLab"
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 COLUMNS = ("Host", "Control / expected evidence", "Evidence reason", "Status / change")
 RESOURCES = (
     "policies/baseline.yml",
