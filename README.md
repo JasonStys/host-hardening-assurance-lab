@@ -19,6 +19,12 @@ This defensive portfolio project answers: **What do we actually know about this 
 - Opt-in read-only collectors: Python/Bash for Linux file evidence; PowerShell 7 for five allowlisted Windows cmdlet properties. Synthetic mode does not query the host.
 - Cross-platform tests, property-based checks, measured benchmarks, hash-locked dependencies, history secret scanning and security-extended CodeQL.
 
+## Native graphical application
+
+The project now includes a real Windows portable workbench: choose your authorized supported files/policies, configure the operation, run the existing core, inspect/filter evidence, retain local SQLite history and export actual reports. Prepared fictional scenarios are optional inputs in that same application, not a separate demo. End users open `HostHardeningAssuranceLab.exe` without Python/Node/setup commands; a reviewed downloadable release and individual desktop icon are separate publication/installation steps.
+
+[Application usage, privacy, backup and build guide](docs/native-application.md) · [Dated candidate validation](docs/reports/native-application-2026-11-10.md). Patched CPython3.14.10, actual runtime notices/DLL hashes, real Tk controls and two-process persistence are verified by the native build/acceptance lane. This is a portable Windows application, not an MSI/NSIS, signed or universal-platform installer. Original CLI workflows below remain available.
+
 ## Safe five-minute demo
 
 Python 3.12–3.14 with SQLite is required. Start in the repository root. No administrator rights, Docker, host collection or settings changes are needed.
@@ -73,7 +79,7 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | File | Purpose |
 | --- | --- |
 | [.gitattributes](.gitattributes) | Portable LF text handling; SQLite outputs are binary. |
-| [.github/workflows/ci.yml](.github/workflows/ci.yml) | Four OS/Python validation lanes, ephemeral worker probe and security gates; no uploads/caches. |
+| [.github/workflows/ci.yml](.github/workflows/ci.yml) | Real Windows GUI/package/reopen acceptance, four OS/Python lanes, ephemeral worker probe and security gates; no uploads/caches. |
 | [.github/workflows/codeql.yml](.github/workflows/codeql.yml) | Least-privilege Python security-extended CodeQL analysis. |
 | [.gitignore](.gitignore) | Keeps environments, keys, output reports and private host evidence out of Git. |
 | [LICENSE](LICENSE) | MIT license for authored source and synthetic fixtures. |
@@ -85,12 +91,16 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [docs/development.md](docs/development.md) | Coding, comments and maintenance guidelines. |
 | [docs/fleet.md](docs/fleet.md) | Expected inventory and evidence refresh. |
 | [docs/handbook.md](docs/handbook.md) | Host Hardening Assurance Lab handbook. |
+| [docs/licenses/tcl-9.0.4.txt](docs/licenses/tcl-9.0.4.txt) | Actual checksum-bound reference SDK Tcl9.0.4 notice; each portable build retains its actual runtime notice. |
+| [docs/licenses/tk-9.0.4.txt](docs/licenses/tk-9.0.4.txt) | Actual checksum-bound reference SDK Tk9.0.4 notice; each portable build retains its actual runtime notice. |
+| [docs/native-application.md](docs/native-application.md) | Host Hardening Assurance native workbench. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Measured local in-memory throughput with scope and environment, not a capacity guarantee. |
 | [docs/reports/demo.html](docs/reports/demo.html) | Escaped, inert synthetic Linux drift report; no real host evidence. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Deterministic synthetic report with policy/snapshot digests and exception details. |
 | [docs/reports/dependency-repair-2026-11-09.md](docs/reports/dependency-repair-2026-11-09.md) | CI-discovered dependency repair — 2026-11-09. |
 | [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
 | [docs/reports/fleet-2026-11-09.md](docs/reports/fleet-2026-11-09.md) | Expected-inventory workflow validation — 2026-11-09. |
+| [docs/reports/native-application-2026-11-10.md](docs/reports/native-application-2026-11-10.md) | Native offline assurance validation — 2026-11-10. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed Word project guide bound to the documented source revision. |
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact Office digests, visual review scopes and immutable source baselines. |
@@ -113,6 +123,9 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [hardening/cli.py](hardening/cli.py) | Assessment/drift CLI and explicitly acknowledged read-only Linux collection. Created by Jason Stys. |
 | [hardening/collect.py](hardening/collect.py) | Opt-in Linux file evidence collector with conservative SSH interpretation. Created by Jason Stys. |
 | [hardening/contracts.py](hardening/contracts.py) | Strict, bounded policy, snapshot and exception contracts. Created by Jason Stys. |
+| [hardening/desktop.py](hardening/desktop.py) | Native offline workbench: real project inputs, analysis, searchable evidence, history and export. Jason Stys. |
+| [hardening/desktop\_project.py](hardening/desktop_project.py) | Actual offline host assessment, drift and inventory evidence review for the native app. Jason Stys. |
+| [hardening/desktop\_state.py](hardening/desktop_state.py) | Owner-local desktop profile, bounded durable bundles and non-overwriting export. Jason Stys. |
 | [hardening/drift.py](hardening/drift.py) | Evidence-aware baseline drift without comparing incompatible hosts/policies. Created by Jason Stys. |
 | [hardening/engine.py](hardening/engine.py) | Deterministic typed assessment, freshness and expiring deviations. Created by Jason Stys. |
 | [hardening/fleet.py](hardening/fleet.py) | Expected-inventory assessment and owner-routed evidence refresh; read-only. Created by Jason Stys. |
@@ -123,9 +136,11 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [pyproject.toml](pyproject.toml) | Runtime metadata, strict typing, lint and branch-inclusive coverage gates. |
 | [requirements-dev.in](requirements-dev.in) | Reviewed direct validation and audit dependencies. |
 | [requirements-dev.lock](requirements-dev.lock) | Complete hash-locked development dependency graph. |
+| [requirements-native.lock](requirements-native.lock) | Exact SHA256-locked Windows freezing tools; runtime graph remains separately locked. |
 | [requirements-runtime.in](requirements-runtime.in) | Minimal reviewed runtime dependency. |
 | [requirements-runtime.lock](requirements-runtime.lock) | Hash-locked portable runtime dependency graph. |
 | [scripts/benchmark.py](scripts/benchmark.py) | Measure bounded baseline evaluation throughput; results are not production capacity claims. Jason Stys. |
+| [scripts/build\_native.py](scripts/build_native.py) | Build the complete real offline workbench as one Windows portable executable. Jason Stys. |
 | [scripts/check-powershell.ps1](scripts/check-powershell.ps1) | PowerShell syntax and read-only command AST allowlist gate. |
 | [scripts/code\_map.py](scripts/code_map.py) | Generate/check exact Python, shell, SQL and YAML symbol positions in headers. Created by Jason Stys. |
 | [scripts/collect-linux.sh](scripts/collect-linux.sh) | Quoted wrapper for opt-in read-only Linux file evidence collection. |
@@ -133,14 +148,20 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [scripts/file\_guide.py](scripts/file_guide.py) | Maintain an exhaustive tracked-file README inventory without exposing ignored host evidence. Jason Stys. |
 | [scripts/fixtures.py](scripts/fixtures.py) | Generate reproducible fictional host evidence and scoped example exceptions. Created by Jason Stys. |
 | [scripts/install\_pwsh.py](scripts/install_pwsh.py) | Hash-verified portable PowerShell bootstrap for disposable macOS CI workers only. Jason Stys. |
+| [scripts/native\_acceptance.py](scripts/native_acceptance.py) | Exercise the same real frozen Tk controls/core on an explicit synthetic profile; no arbitrary scripts. Jason Stys. |
+| [scripts/native\_entry.py](scripts/native_entry.py) | Launch the actual bundled offline project workbench; no setup shell commands. Jason Stys. |
 | [scripts/scenarios.py](scripts/scenarios.py) | Verify independent demo truth for pass, drift, missing/stale/future evidence and exceptions. Jason Stys. |
 | [scripts/summary.py](scripts/summary.py) | Small CI job summaries without uploading Actions artifacts or sensitive telemetry. Jason Stys. |
+| [scripts/test\_native\_app.py](scripts/test_native_app.py) | Run the real frozen workbench twice with an owned synthetic profile and exact bundle persistence. Jason Stys. |
 | [scripts/tools.py](scripts/tools.py) | Install only hash-pinned official Linux scanner binaries. Created by Jason Stys. |
 | [scripts/validate.sh](scripts/validate.sh) | Portable fail-fast quality, synthetic tests, scenario and benchmark gates. |
 | [tests/conftest.py](tests/conftest.py) | Shared synthetic contract fixtures; tests never collect this PC's settings. Created by Jason Stys. |
 | [tests/test\_bootstrap.py](tests/test_bootstrap.py) | Offline portable worker archive checksum/path isolation tests. Created by Jason Stys. |
 | [tests/test\_collect.py](tests/test_collect.py) | Read-only collector fixture tests, SSH ambiguity and actual PowerShell synthetic execution. Jason Stys. |
 | [tests/test\_contracts.py](tests/test_contracts.py) | Strict contract rejection, semantic hashing and YAML/JSON misuse tests. Created by Jason Stys. |
+| [tests/test\_desktop\_gui.py](tests/test_desktop_gui.py) | Presentation-adapter unit tests with real core/SQLite workers; real widgets are separately frozen-tested. Jason Stys. |
+| [tests/test\_desktop\_project.py](tests/test_desktop_project.py) | Real offline GUI adapters use existing baseline/drift/fleet core with independent fixture oracles. Jason Stys. |
+| [tests/test\_desktop\_state.py](tests/test_desktop_state.py) | Independent offline desktop ownership, byte-bound, SQLite and non-overwrite regressions. Jason Stys. |
 | [tests/test\_engine.py](tests/test_engine.py) | Baseline, independent oracle, property checks, freshness and exception-boundary tests. Jason Stys. |
 | [tests/test\_fleet.py](tests/test_fleet.py) | Independent inventory completeness, policy grouping and owner workflow tests. Created by Jason Stys. |
 | [tests/test\_maintenance.py](tests/test_maintenance.py) | Generated symbol-map, README escaping and fixture reproducibility regressions. Created by Jason Stys. |

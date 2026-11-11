@@ -4,23 +4,23 @@
 # variable: BEGIN — line 32
 # variable: END — line 33
 # variable: SPECIAL — line 34
-# definition: description — line 61
-# parameter: path — line 61
-# variable: content — line 71
-# variable: summary — line 72
-# definition: label — line 79
-# parameter: path — line 79
-# definition: main — line 84
-# variable: parser — line 86
-# variable: args — line 88
-# variable: files — line 89
-# variable: rows — line 97
-# variable: path — line 100
-# variable: path — line 102
-# variable: original — line 103
-# variable: first — line 104
-# variable: last — line 104
-# variable: expected — line 105
+# definition: description — line 64
+# parameter: path — line 64
+# variable: content — line 74
+# variable: summary — line 75
+# definition: label — line 82
+# parameter: path — line 82
+# definition: main — line 87
+# variable: parser — line 89
+# variable: args — line 91
+# variable: files — line 92
+# variable: rows — line 100
+# variable: path — line 103
+# variable: path — line 105
+# variable: original — line 106
+# variable: first — line 107
+# variable: last — line 107
+# variable: expected — line 108
 # END CODE MAP
 
 import argparse
@@ -32,6 +32,9 @@ ROOT = Path(__file__).resolve().parents[1]
 BEGIN = "<!-- BEGIN FILE GUIDE -->"
 END = "<!-- END FILE GUIDE -->"
 SPECIAL = {
+    "requirements-native.lock": "Exact SHA256-locked Windows freezing tools; runtime graph remains separately locked.",
+    "docs/licenses/tcl-9.0.4.txt": "Actual checksum-bound reference SDK Tcl9.0.4 notice; each portable build retains its actual runtime notice.",
+    "docs/licenses/tk-9.0.4.txt": "Actual checksum-bound reference SDK Tk9.0.4 notice; each portable build retains its actual runtime notice.",
     "docs/reports/project-guide.docx": "Reviewed Word project guide bound to the documented source revision.",
     "docs/reports/publications.json": "Exact Office digests, visual review scopes and immutable source baselines.",
     ".gitattributes": "Portable LF text handling; SQLite outputs are binary.",
@@ -49,7 +52,7 @@ SPECIAL = {
     "scripts/check-powershell.ps1": "PowerShell syntax and read-only command AST allowlist gate.",
     "scripts/collect-linux.sh": "Quoted wrapper for opt-in read-only Linux file evidence collection.",
     "scripts/validate.sh": "Portable fail-fast quality, synthetic tests, scenario and benchmark gates.",
-    ".github/workflows/ci.yml": "Four OS/Python validation lanes, ephemeral worker probe and security gates; no uploads/caches.",
+    ".github/workflows/ci.yml": "Real Windows GUI/package/reopen acceptance, four OS/Python lanes, ephemeral worker probe and security gates; no uploads/caches.",
     ".github/workflows/codeql.yml": "Least-privilege Python security-extended CodeQL analysis.",
     "examples/exceptions.json": "Explicit fictional host/control/policy deviation with one-day expiry.",
     "docs/reports/demo.html": "Escaped, inert synthetic Linux drift report; no real host evidence.",
