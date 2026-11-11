@@ -100,6 +100,7 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [docs/reports/dependency-repair-2026-11-09.md](docs/reports/dependency-repair-2026-11-09.md) | CI-discovered dependency repair — 2026-11-09. |
 | [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
 | [docs/reports/fleet-2026-11-09.md](docs/reports/fleet-2026-11-09.md) | Expected-inventory workflow validation — 2026-11-09. |
+| [docs/reports/installed-windows-2026-11-10.md](docs/reports/installed-windows-2026-11-10.md) | Installed Windows application validation 10 November 2026. |
 | [docs/reports/native-application-2026-11-10.md](docs/reports/native-application-2026-11-10.md) | Native offline assurance validation — 2026-11-10. |
 | [docs/reports/native-reader-boundary-2026-11-10.md](docs/reports/native-reader-boundary-2026-11-10.md) | Native reader and lifecycle-layout follow-up — 2026-11-10. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
@@ -107,8 +108,12 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact Office digests, visual review scopes and immutable source baselines. |
 | [docs/reports/review.md](docs/reports/review.md) | Author review and release checklist. |
 | [docs/reports/validation.md](docs/reports/validation.md) | Validation results. |
+| [docs/reports/windows-application-guide-1.1.0.docx](docs/reports/windows-application-guide-1.1.0.docx) | Individually reviewed four-page installed application guide with actual screenshots, worked workflow, immutable source excerpts and limits. |
+| [docs/reports/windows-application-guide-1.1.0.json](docs/reports/windows-application-guide-1.1.0.json) | Exact Word, actual screenshot and reviewed page digests plus observed source-specific validation results. |
 | [docs/research.md](docs/research.md) | Primary-source research and design rationale. |
 | [docs/runbook.md](docs/runbook.md) | Operator runbook and help. |
+| [docs/screenshots/installed-1.1.0/missing-host-refresh.png](docs/screenshots/installed-1.1.0/missing-host-refresh.png) | Actual installed application synthetic-profile screenshot: Missing host refresh queue. |
+| [docs/screenshots/installed-1.1.0/offline-control-review.png](docs/screenshots/installed-1.1.0/offline-control-review.png) | Actual installed application synthetic-profile screenshot: Offline control and exception review. |
 | [docs/security.md](docs/security.md) | Threat model, privacy and residual risk. |
 | [docs/testing.md](docs/testing.md) | Risk-based validation and reproducibility. |
 | [examples/exceptions.json](examples/exceptions.json) | Explicit fictional host/control/policy deviation with one-day expiry. |
@@ -177,3 +182,18 @@ Every tracked file is summarized below. Python, shell, SQL and YAML headers incl
 Start with the [organized handbook](docs/handbook.md) for current usage, design, security and test guidance. Reviewed downloadable editions: [project-guide.docx](docs/reports/project-guide.docx).
 
 [Publication identities and source scope](docs/reports/publications.json) · [Documentation validation record](docs/reports/documentation-refresh-2026-11-09.md). Historical results retain their own tested revision and date.
+
+## Current Windows application guide
+
+The [version 1.1.0 illustrated guide](docs/reports/windows-application-guide-1.1.0.docx) explains the actual
+installed application with two real screenshots, a worked user workflow, important
+source excerpts and observed validation. Read the [dated delivery report](docs/reports/installed-windows-2026-11-10.md)
+and [byte and page review](docs/reports/windows-application-guide-1.1.0.json) for exact scope. Historical Office
+editions remain available with their original baselines.
+
+New documentation files:
+
+- [docs/reports/windows-application-guide-1.1.0.docx](docs/reports/windows-application-guide-1.1.0.docx): Individually reviewed four-page installed application guide with actual screenshots, worked workflow, immutable source excerpts and limits.
+- [docs/reports/windows-application-guide-1.1.0.json](docs/reports/windows-application-guide-1.1.0.json): Exact Word, actual screenshot and reviewed page digests plus observed source-specific validation results.
+- [docs/screenshots/installed-1.1.0/offline-control-review.png](docs/screenshots/installed-1.1.0/offline-control-review.png): Actual installed application synthetic-profile screenshot: Offline control and exception review.
+- [docs/screenshots/installed-1.1.0/missing-host-refresh.png](docs/screenshots/installed-1.1.0/missing-host-refresh.png): Actual installed application synthetic-profile screenshot: Missing host refresh queue.

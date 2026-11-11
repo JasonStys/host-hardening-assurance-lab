@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "repository": "host-hardening-assurance-lab",
+  "runtimeVersion": "1.1.0",
+  "runtimeSource": "fa1daf2af31dc76c0ade1069f6132071b888b3dc",
+  "createdAt": "2026-11-11T03:59:49.649Z",
+  "author": "Jason Stys",
+  "document": "windows-application-guide-1.1.0.docx",
+  "sha256": "f634be2e2077995b66e32d70458638553309f4c3df97d5191a0b65d2c446998c",
+  "screenshots": [
+    {
+      "file": "offline-control-review.png",
+      "sha256": "1c5987fbc075a80d1b3b100d34a39378876e821f669221592a95806630fc3def",
+      "width": 1276,
+      "height": 899,
+      "caption": "The installed workbench shows a supplied SSH-password deviation as EXCEPTED and retains the dated exception and evidence reason. Its displayed synthetic snapshot has 2 PASS,2 FAIL,0 UNKNOWN and 1 EXCEPTED."
+    },
+    {
+      "file": "missing-host-refresh.png",
+      "sha256": "cb5a9c1729e82af357ef2695b2e80c0dcb3c22bee14f39c5cfad6ee4688b744a",
+      "width": 1276,
+      "height": 899,
+      "caption": "The installed application reviews expected-host and missing-evidence results. Missing or stale observations remain visible rather than increasing the assessed-host assurance count."
+    }
+  ],
+  "snippets": [
+    {
+      "file": "hardening/desktop_project.py",
+      "first": 150,
+      "last": 174,
+      "sha256": "1bb3cfd79793f483ab411d0ce07dbffb2a2c10d211ffc32460f274761cdde1e6",
+      "url": "https://github.com/JasonStys/host-hardening-assurance-lab/blob/fa1daf2af31dc76c0ade1069f6132071b888b3dc/hardening/desktop_project.py#L150"
+    }
+  ],
+  "observedTests": [
+    {
+      "name": "Release and runtime",
+      "observed": "All 5 downloaded assets matched provider/sidecar hashes. Actual frozen CPython 3.14.10 and Tcl/Tk 9.0.4 matched their recorded runtime identities.",
+      "result": "Passed"
+    },
+    {
+      "name": "Real user workflow",
+      "observed": "Three original and refresh-review bundles survived restart exactly. Single-host and fleet workflows, missing evidence, malformed input and long-status lifecycle layout passed.",
+      "result": "Passed"
+    },
+    {
+      "name": "Source and security",
+      "observed": "All current main workflows passed. Exact-source CodeQL analyses processed with zero open main alerts before publication.",
+      "result": "Passed"
+    },
+    {
+      "name": "Desktop delivery",
+      "observed": "New individual Desktop and Start-menu links target the installed accepted EXE. Shortcut metadata was read back; normal shortcut activation was not independently exercised.",
+      "result": "Verified"
+    }
+  ],
+  "visualReview": {
+    "approved": true,
+    "scope": "all four pages individually inspected",
+    "ooxmlSchema": "passed",
+    "pages": [
+      {
+        "file": "page-1.png",
+        "sha256": "0356a3488b547cebc8ec8c7fc808df2c934a2bd29f741f5d72f16776c8390606"
+      },
+      {
+        "file": "page-2.png",
+        "sha256": "a34cf4e09a292c9414d21251a9b199cbf10f1aa7e9ba10df84f3c57f185ef245"
+      },
+      {
+        "file": "page-3.png",
+        "sha256": "088f8ab532fdb556653d90562505523d88e2fc6adc389c8afc4d48701ba3026b"
+      },
+      {
+        "file": "page-4.png",
+        "sha256": "f2ab5828de8a4e1ef38489193f9f029ce88d8462382c30eddec832e4ae9299b4"
+      }
+    ],
+    "reviewedUtc": "2026-11-11T04:31:20.646598+00:00"
+  }
+}

@@ -4,23 +4,23 @@
 # variable: BEGIN — line 32
 # variable: END — line 33
 # variable: SPECIAL — line 34
-# definition: description — line 64
-# parameter: path — line 64
-# variable: content — line 74
-# variable: summary — line 75
-# definition: label — line 82
-# parameter: path — line 82
-# definition: main — line 87
-# variable: parser — line 89
-# variable: args — line 91
-# variable: files — line 92
-# variable: rows — line 100
-# variable: path — line 103
-# variable: path — line 105
-# variable: original — line 106
-# variable: first — line 107
-# variable: last — line 107
-# variable: expected — line 108
+# definition: description — line 68
+# parameter: path — line 68
+# variable: content — line 78
+# variable: summary — line 79
+# definition: label — line 86
+# parameter: path — line 86
+# definition: main — line 91
+# variable: parser — line 93
+# variable: args — line 95
+# variable: files — line 96
+# variable: rows — line 104
+# variable: path — line 107
+# variable: path — line 109
+# variable: original — line 110
+# variable: first — line 111
+# variable: last — line 111
+# variable: expected — line 112
 # END CODE MAP
 
 import argparse
@@ -32,6 +32,10 @@ ROOT = Path(__file__).resolve().parents[1]
 BEGIN = "<!-- BEGIN FILE GUIDE -->"
 END = "<!-- END FILE GUIDE -->"
 SPECIAL = {
+    "docs/reports/windows-application-guide-1.1.0.docx": "Individually reviewed four-page installed application guide with actual screenshots, worked workflow, immutable source excerpts and limits.",
+    "docs/reports/windows-application-guide-1.1.0.json": "Exact Word, actual screenshot and reviewed page digests plus observed source-specific validation results.",
+    "docs/screenshots/installed-1.1.0/offline-control-review.png": "Actual installed application synthetic-profile screenshot: Offline control and exception review.",
+    "docs/screenshots/installed-1.1.0/missing-host-refresh.png": "Actual installed application synthetic-profile screenshot: Missing host refresh queue.",
     "requirements-native.lock": "Exact SHA256-locked Windows freezing tools; runtime graph remains separately locked.",
     "docs/licenses/tcl-9.0.4.txt": "Actual checksum-bound reference SDK Tcl9.0.4 notice; each portable build retains its actual runtime notice.",
     "docs/licenses/tk-9.0.4.txt": "Actual checksum-bound reference SDK Tk9.0.4 notice; each portable build retains its actual runtime notice.",
