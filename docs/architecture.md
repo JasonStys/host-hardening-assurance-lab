@@ -40,3 +40,10 @@ No claim is made that Big-O predicts real elapsed time or that an in-memory benc
 Any future enforcement requires a separate accepted ADR, explicit owner approval, tested recovery access, staging, maintenance windows, compatibility tests and rollback. A central service additionally requires authenticated collection, tenant isolation, signed evidence and private transport. Neither is authorized or implemented here.
 
 CI runner note (2026-10-13): a follow-up `macos-latest` job never acquired an ARM64 worker after provider-reported capacity constraints. The explicit supported standard `macos-15-intel` pool was selected, preserving the same complete tests and portable PowerShell checksum verification. This improves OS-label reproducibility but is not a guarantee against future provider capacity failures. No paid/larger pool or unrelated workflow was changed.
+
+
+## Native workbench boundary
+
+The native entry adds graphical controls around the original core, not a second implementation of its rules. `desktop_project.py` owns project-specific supported input/operation/view semantics; `desktop.py` owns Tk controls and an owned background worker; `desktop_state.py` owns one marked OS-local profile, SQLite transactions, bounded bundles, provenance hashes and explicit retention. Original CLI paths and new-directory exports are preserved.
+
+Only the Tk thread changes widgets. A worker captures scalar settings once, invokes existing analysis functions and saves a completed bundle atomically; the event queue reports completion/errors. Exit waits for that worker before releasing the profile. There is no local HTTP server, remote service, collector/enforcement route or automatic sample execution. Per-user durable storage is outside temporary one-file extraction and the executable installation. Exact frozen resources/interpreter version are checked before opening it. User acknowledgement is not identity authentication.

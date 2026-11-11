@@ -45,3 +45,14 @@ Actions matrix: Ubuntu Python 3.12 and 3.14; Windows/macOS 15 Intel Python 3.14.
 See [validation report](reports/validation.md) for dated measured outcomes and exact commit/run links, and [benchmark](reports/benchmark.json) for environment/scope. Core coverage does not measure completeness of OS security controls; CLI module subprocess coverage may differ across coverage runtimes.
 
 No real production host, full Windows domain/GPO deployment, multi-tenant service, encryption-at-rest service, full SSH parser or automatic remediation is tested/claimed. Windows permission/OS cmdlet variation and alternate antivirus remain operational review points. Hosted worker checks validate contracts, not security of every supported OS release.
+
+
+## Native workbench validation
+
+New project-adapter tests call actual core functions and SQLite exports with independent known fixture oracles. Storage tests exercise one-owner profiles, unknown/incompatible state, safe paths, quotas, transactions, BLOB hashes, stale-confirmation rejection and non-reused run identities. Presentation-adapter tests replace only OS widgets/dialog acquisition while keeping core/storage/thread work real. An actual Windows frozen executable separately instantiates the same Tk widgets/mainloop and runs the actual controls against an explicitly synthetic profile; no result/API is mocked.
+
+`python scripts/build_native.py` requires an isolated patched CPython3.14.10 build environment and exact native lock. `python scripts/test_native_app.py` tests the resulting EXE with no Python/Node on its child PATH and no provider/account environment, validates independent domain oracles and exact private export, checks normal owned-process disappearance and starts a second process to prove exact retained bundle hashes. Screenshots capture only its owned synthetic window. This is not independent OS accessibility automation, populated real-user upgrade or signing proof. Existing coverage, benchmark, property, cross-platform, security-extended CodeQL and dependency/secret/configuration/workflow gates remain mandatory. No artifact/cache uploads were added.
+
+[Actual native candidate observations](reports/native-application-2026-11-10.md) are distinct from historical reports and pending hosted/release results. Do not infer a future CI pass from a local build.
+
+[Native reader/lifecycle follow-up](reports/native-reader-boundary-2026-11-10.md) adds real opened-NUL rejection, an actual POSIX no-writer FIFO replacement child and packaged minimum-width/long-status lifecycle-control assertions. Windows FIFO skips remain explicit; all original analysis/coverage/security gates are retained.
